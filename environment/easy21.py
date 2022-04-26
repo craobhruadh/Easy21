@@ -7,7 +7,7 @@ Card = namedtuple('Card', ['value', 'color'])
 
 # Note: I tried to get fancy but the stated problem as is involves
 # one dealer and one player.  If this changes (e.g. multiple players)
-# then datacal
+# then dataclass is great
 
 # @dataclass
 # class Action:
@@ -25,7 +25,7 @@ Card = namedtuple('Card', ['value', 'color'])
 
 class Easy21:
 
-    def __init__(self, discount_factor=1):
+    def __init__(self, discount_factor=1,):
         self.discount_factor = 1
         self.setup_new_game()
 
@@ -49,6 +49,11 @@ class Easy21:
             color=color
         )
         return card
+
+    def get_state(self, verbose=False):
+        if verbose:
+            print(f'Players Sum: {self.players_sum}, Dealers sum: {self.dealers_sum}')
+        return self.players_sum, self.dealers_sum
 
     def step(self, action='hit', verbose=False):
         """Do a step.  Acceptable states are either 'hit'
