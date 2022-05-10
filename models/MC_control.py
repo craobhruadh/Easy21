@@ -6,7 +6,7 @@ import numpy as np
 class MonteCarloControl:
 
     def __init__(self, discount=1, N0=100):
-        self.discount = 1
+        self.discount = discount
         self.N0 = N0
         self.state_visit_counter = Counter()
         self.state_action_counter = Counter()
