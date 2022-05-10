@@ -57,7 +57,7 @@ class Easy21:
 
     def step(self, action='hit', verbose=False):
         """Do a step.  Acceptable states are either 'hit'
-        or 'stick'.  We do not use 'fold' like a civilized 
+        or 'stick'.  We do not use 'fold' like a civilized
         person because we are stuck with the British version
 
         Question: can we store the state in the object

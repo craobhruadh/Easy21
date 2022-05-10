@@ -10,7 +10,7 @@ class TDLearning:
         self.N0 = N0
         self.state_visit_counter = Counter()
         self.state_action_counter = Counter()
-        self.possible_actions = ['stick', 'hit']        
+        self.possible_actions = ['stick', 'hit']
         self.value = {
             'stick': np.zeros((21, 10)),
             'hit': np.zeros((21, 10))
@@ -39,10 +39,6 @@ class TDLearning:
         Q = self.value[action][state[0]-1][state[1]-1]
         alpha = self.get_alpha(state, action)
         Q_prime = self.value[action_prime][state_prime[0]-1][state_prime[1]-1]
-        # max_Q_prime = max(
-        #     self.value['hit'][state_prime[0]-1][state_prime[1]-1],
-        #     self.value['stick'][state_prime[0]-1][state_prime[1]-1]
-        # )
         error = alpha * (reward + self.discount*Q_prime - Q)
         self.value[action][state[0]-1][state[1]-1] = Q + error
 
