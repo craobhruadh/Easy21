@@ -36,6 +36,10 @@ class TDLearning:
             self.model_episode()
 
     def update_value_function(self, state, state_prime, action, action_prime, reward):
+        """Updates the value function as expected for SARSA.  Note that
+        it is designed to be updated after each action, not after each 
+        episode (like in MC Control)
+        """
         Q = self.value[action][state[0]-1][state[1]-1]
         alpha = self.get_alpha(state, action)
         Q_prime = self.value[action_prime][state_prime[0]-1][state_prime[1]-1]
@@ -43,6 +47,11 @@ class TDLearning:
         self.value[action][state[0]-1][state[1]-1] = Q + error
 
     def get_next_action(self, state):
+        """
+        This is effectively our policy.  If we are in explore mode, choose
+        a random action from our policy.  If in exploitation mode, choose
+        the action that is greedily expected to maximize our return. 
+        """
         if np.random.rand() < self.get_epsilon(state):
             action = np.random.choice(self.possible_actions)
         elif (
