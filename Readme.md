@@ -1,4 +1,4 @@
-# My solution for Easy21 (WIP)
+# My implementation of Easy21 (WIP)
 
 My implementation of the Easy21 programming exercise using Reinforcement Learning, from David Silver's excellent 2015 Reinforcement Learning course. 
 
